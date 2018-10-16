@@ -1,0 +1,47 @@
+﻿@model BorisK_Admin.Models.LoginModel
+
+@{
+    ViewBag.Title = "Admin";
+}
+<style>
+    .txt {
+        padding: 2px;
+        width: 200px;
+        border: 1px solid black;
+        height: 30px;
+        color:#000000;
+    }
+
+    .btn {
+        padding: 10px;
+        font-weight: bold;
+        width: 100px;
+    }
+    .form
+    {
+        width:100%;
+    }
+</style>
+<div class="row" style="margin-top:160px; text-align:center;">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new {@class ="form"})) {
+        <h3>Sign In</h3>
+        <div class="row">
+            <div class="col-lg-5 col-xs-4" style="text-align:right;"></div>
+            <div class="col-lg-7 col-xs-8" style="text-align:left; color:red">@ViewBag.Message</div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-5 col-xs-4" style="text-align:right;">User Name</div>
+            <div class="col-lg-7 col-xs-8" style="text-align:left">@Html.TextBoxFor(m => m.UserName, new { @class = "txt", required = "required", placeholder = "User Name" })</div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="col-lg-5 col-xs-4" style="text-align:right;">Password</div>
+            <div class="col-lg-7 col-xs-8" style="text-align:left">@Html.PasswordFor(m => m.Password, new { @class = "txt", required = "required", placeholder = "Password" })</div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="col-lg-5 col-xs-4"></div>
+            <div class="col-lg-7 col-xs-8" style="text-align:left"><input type="submit" title="Sunmit" value="Log In" class="btn btn-primary" /></div>
+        </div>
+    }
+</div>
+

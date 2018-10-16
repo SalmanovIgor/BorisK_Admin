@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "File Upload";
+}
+
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+</style>
+<div class="row" style="margin-top:20px;">
+    @*<div class="col-12">
+            <h1>File Upload</h1>
+        </div>*@
+    <div class="col-12">
+        <h4>Please select file with ISBNs. File must be in CSV format.</h4>
+    </div>
+    <div class="col-12">
+        <hr />
+    </div>
+    @using (Html.BeginForm("FileUpload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div style="width:50%;float:left;">
+        <div class="col-12">
+            <h5 style="color:black">@ViewBag.Message</h5>
+            <h5 style="color:rgb(0,175,0);">@ViewBag.SuccessMessage</h5>
+            <h5 style="color:red">@ViewBag.ErrorMessage</h5>
+        </div>
+        <br />
+        <div class="col-12">
+            <b>Enter Email Address</b> @Html.TextBox("Emails", "", new { name = "Emails", type = "text", @class = "form-control", placeholder ="EX. abc@gmail.com,test@gmail.com" })
+        </div>
+        <br />
+        <div class="col-12">
+
+            @Html.TextBox("file", "", new { type = "file", @class = "btn-file", @accept = ".csv" })
+        </div>
+        <br />
+        <div class="upload-btn-wrapper">
+            <button class="btn btn-primary btn-lg">Upload File</button>
+        </div>
+    </div>
+        <div style="width:50%;float:right;">
+            Example : sample.csv
+            <pre>
+ISBN
+9780073397962
+9780323354820
+9781305581067
+9781292002972
+9781305084766
+9781305079144
+9781259550904
+9781285427331
+            </pre>
+            <p>Click <a href="../sample/sample.csv">here</a> to download this Sample file.</p>
+            <br/>
+            <p><span style="color:red">*</span> ISBN should be 10-13 characters long.</p>
+        </div>
+    }
+</div>
